@@ -1,0 +1,10 @@
+<div class="main-container">
+  <div class="sidebar" id="left-nav"
+       [ngClass]="{ 'sidebar-hide': isSidebarHidden, 'sidebar-show': !isSidebarHidden }">
+    <app-sidebar (toggleSidebar)="toggleSidebar()"></app-sidebar>
+  </div>
+
+  <div class="container" [ngClass]="{ 'full-width': isSidebarHidden }">
+    <app-chat-container   [isSidebarHidden]="isSidebarHidden"   (showSidebar)="toggleSidebar()"></app-chat-container>
+  </div>
+</div>

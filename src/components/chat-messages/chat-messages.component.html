@@ -1,0 +1,124 @@
+<div class="chat-messages" id="chat-messages">
+  <app-custom-popup></app-custom-popup>
+                <!-- Welcome message -->
+                <div class="message assistant-message welcome-message" id="welcome-message" *ngIf="welcome" [ngClass]="{  'welcome-hide': !welcome}">
+                    <div class="welcome-header">
+                        <div class="welcome-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Welcome to CyberVisible</h3>
+                    </div>
+                    <p>Ask analytics questions about your IT and security data or switch to Document mode to query your documents.</p>
+                    <div class="welcome-examples">
+                        <p>Try asking:</p>
+                        <div class="example-cards">
+                            <div class="example-card" id="What is the overall compliance percentage across all systems?" (click)="sendMessage($event)">
+                                <i class="fas fa-percentage"></i>
+                                <span>Overall compliance percentage</span>
+                            </div>
+                            <div class="example-card" id="Show me the Crowdstrike compliance for workstations" (click)="sendMessage($event)">
+                                 <i class="fas fa-laptop"></i>
+                                <span>Crowdstrike compliance for workstations</span>
+                            </div>
+                            <div class="example-card" id="List the top 10 departments by compliance rate" (click)="sendMessage($event)">
+                                <i class="fas fa-building"></i>
+                                <span>Top 10 departments by compliance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+  <ng-container *ngFor="let msg of messages; let i = index">
+    <!-- User message -->
+    <div class="message user-message" [ngClass]="{  'message user-message': !welcome}">
+      {{ msg.query }}
+      <span class="message-time" [ngClass]="{  'message-time': !welcome}">{{ msg.message_time }}</span>
+    </div>
+
+    <!-- Assistant message -->
+    <div [ngClass]="{  'message assistant-message': !welcome}" class="message assistant-message" >
+      <ng-container *ngIf="msg.query_data?.length > 0; else noData">
+        <div [ngClass]="{  'query-summary-container': !welcome}" class="query-summary-container">
+          <strong>Summary:</strong> <span></span>{{ msg.query_summary }}
+        </div>
+<button 
+  [id]="'btn-' + currentMessage + '-' + i" 
+  [ngClass]="{ 'showSQL': !welcome }" 
+  class="showSQL" 
+  (click)="toggleSQL()"
+>
+  {{ showSqlBlock ? 'Hide SQL Code' : 'Show SQL Code' }}
+</button>
+
+<div 
+  [ngClass]="{ 'sql-container': !welcome }" 
+  class="sql-container"
+>
+  <div 
+    *ngIf="showSqlBlock"
+    [ngClass]="{ 'sql-code': !welcome }" 
+    class="sql-code"
+    [id]="'sql-' + currentMessage + '-' + i"
+  >
+    {{ msg.sql_query }}
+  </div>
+</div>
+
+
+        
+
+        <div [ngClass]="{  'result-heading': !welcome}" class="result-heading">Data Results:</div>
+        <div [ngClass]="{  'table-container': !welcome}" class="table-container" style="overflow-y: hidden;">
+          <table *ngIf="msg.query_data.length > 0" [ngClass]="{  'data-table': !welcome}" class="data-table"> 
+            <thead>
+              <tr>
+                <th *ngFor="let key of getKeys(msg.query_data[0])">{{ key }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of msg.query_data">
+                <td *ngFor="let key of getKeys(row)">{{ row[key] }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div [ngClass]="{  'chart-heading': !welcome}" class="chart-heading">Visual Representation ({{ msg.chart_type }}):</div>
+        <div [ngClass]="{  'chart-container': !welcome}" class="chart-container">
+          <img
+            *ngIf="msg.chart_image !== null"
+            [src]="'data:image/png;base64,' + msg.chart_image"
+            alt="Chart visualization"
+            [ngClass]="{  'chart-image': !welcome}" class="chart-image"
+          />
+        </div>
+      </ng-container>
+<button (click)="openForm(i)" id='{{i}}' type="submit" name="button_id" class="atd">Add to Dashboard</button>
+
+
+
+
+
+
+      <ng-template #noData>
+        <div [ngClass]="{  'data-message': !welcome}" class="data-message" style="color: red;">{{ msg.query_summary }}</div>
+      </ng-template>
+
+      <div [ngClass]="{  'message-stats': !welcome}" class="message-stats">
+        Processing time: {{ msg.processing_time.toFixed(2) }}s | Tokens: {{ msg.token_count }}
+      </div>
+      <span [ngClass]="{  'message-time': !welcome}" class="message-time">{{ msg.message_time }}</span>
+    </div>
+  </ng-container>
+</div>
+
+            
+            
+            <div  class="loading" id="loading">
+                <div  class="pulse-container">
+                    <div class="pulse-bubble pulse-bubble-1"></div>
+                    <div class="pulse-bubble pulse-bubble-2"></div>
+                    <div class="pulse-bubble pulse-bubble-3"></div>
+                </div>
+                <div class="loading-text">Processing your query...</div>
+            </div>
+            

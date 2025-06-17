@@ -1,0 +1,198 @@
+
+.rename-modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(3px);
+}
+
+.rename-modal-content {
+  background-color: #ffffff;
+  padding: 25px 30px;
+  border-radius: 16px;
+  width: 320px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.rename-modal-content h3 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #111827;
+}
+
+#rename-input {
+  width: 100%;
+  padding: 10px 12px;
+  height: 40px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+#rename-input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.rename-modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rename-modal-buttons button {
+  width: 48%;
+  height: 45px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.rename-modal-buttons button:first-child {
+  background-color: #4f46e5;
+}
+
+.rename-modal-buttons button:first-child:hover {
+  background-color: #4338ca;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.rename-modal-buttons button:last-child {
+  background-color: #9ca3af;
+}
+
+.rename-modal-buttons button:last-child:hover {
+  background-color: #6b7280;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(156, 163, 175, 0.3);
+}
+
+
+/* Add this to your CSS */
+.popup-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center; justify-content: center;
+    z-index: 9999;
+  }
+  
+  .popup-content {
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    max-width: 400px;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .popup-buttons {
+    margin-top: 20px;
+  }
+  
+  .popup-btn {
+    padding: 10px 18px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+  }
+  
+  .popup-btn.ok {
+    background-color: #ff4d4f;
+    color: white;
+  }
+  
+  .popup-btn.cancel {
+    background-color: #ddd;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+#formModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 1000;
+  }
+  
+  /* Modal Box Styling */
+  .modal-content {
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    width: 350px;
+    text-align: center;
+  }
+  
+  /* Input dropdown styling */
+  .modal-content select {
+    width: 100%;
+    padding: 8px;
+    margin: 15px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Buttons */
+  .modal-content button {
+    padding: 8px 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .modal-content button:first-of-type {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .modal-content button:last-of-type {
+    background-color: #f44336;
+    color: white;
+  }
+ 
+#content-grafana{
+    position: fixed;
+    top: 200px;
+    left: 500px;
+}  
+
+#dashboardSelect {
+  max-height: 150px; /* restrict open dropdown height */
+  overflow-y: auto;
+}

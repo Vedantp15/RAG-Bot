@@ -1,0 +1,39 @@
+.main-container {
+    font-family: 'Inter', 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #1e293b;
+    color: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #334155;
+    flex-shrink: 0;
+}
+
+.container {
+    background-color: #ffffff;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+    border-radius: 0;
+}
+
+.sidebar-hide {
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0;
+}
+
+.sidebar-show {
+  max-width: 250px;  /* or whatever width you want */
+  opacity: 1;
+}

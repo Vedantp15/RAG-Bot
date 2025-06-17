@@ -1,0 +1,18 @@
+<div class="chat-header">
+                <div 
+  class="header-left"   id="show-sidebar"   [class.disabled]="!isSidebarHidden"  (click)="isSidebarHidden ?   null:onShowSidebarClick()"
+>
+                    <h2><i [class]=" isSidebarHidden ?   'ri-menu-line': 'fas fa-robot'"></i> CyberVisible Assistant</h2>
+                </div>
+                <div class="header-right">
+                    <div class="current-mode-indicator">
+                        <div class="mode-badge">
+                            <i class="fas fa-database"></i>
+                            <span>Mode: <strong id="current-mode-display">{{placeholderText}}</strong></span>
+                        </div>
+                    </div>
+                    <div class="theme-toggle">
+                        <i class="fas fa-moon" id="theme-icon"></i>
+                    </div>
+                </div>
+            </div>
